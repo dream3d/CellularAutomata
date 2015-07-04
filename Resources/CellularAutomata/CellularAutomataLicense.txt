@@ -1,0 +1,5 @@
+The CellularAutomata Plugin contains software that is the sole property of BlueQuartz Software. The Software may not be redistributed outside of BlueQuartz Software in any form including source and precompiled binary without the express written consent of:
+
+BlueQuartz Software, LLC
+400 S. Pionner Blvd.
+Springboro OH 45066
