@@ -14,15 +14,7 @@
 
 
 #include "CellularAutomata/moc_CellularAutomataPlugin.cpp"
-
-
-
-namespace Detail
-{
-  const QString CellularAutomataPluginFile("CellularAutomataPlugin");
-  const QString CellularAutomataPluginDisplayName("CellularAutomata");
-  const QString CellularAutomataPluginBaseName("CellularAutomataPlugin");
-}
+#include "CellularAutomata/CellularAutomataConstants.h"
 
 // -----------------------------------------------------------------------------
 //
@@ -52,7 +44,7 @@ CellularAutomataPlugin::~CellularAutomataPlugin()
 // -----------------------------------------------------------------------------
 QString CellularAutomataPlugin::getPluginName()
 {
-  return (Detail::CellularAutomataPluginDisplayName);
+  return CellularAutomata::CellularAutomataPluginDisplayName;
 }
 
 // -----------------------------------------------------------------------------
