@@ -5,7 +5,7 @@
 #include "RecrystalizeVolume.h"
 #include "CellularAutomataHelpers.hpp"
 
-#ifdef DREAM3D_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
 #include <tbb/parallel_for.h>
 #include <tbb/blocked_range.h>
 #include <tbb/partitioner.h>
@@ -15,7 +15,7 @@
 
 #include <QtCore/QString>
 
-#include "DREAM3DLib/Math/DREAM3DMath.h"
+#include "SIMPLib/Math/SIMPLibMath.h"
 
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/uniform_int.hpp>
@@ -34,7 +34,7 @@ class RecrystalizeVolumeImpl
     static const int TWENTY_CELL = 4;
     static const int MOORE = 5;
 
-#ifdef DREAM3D_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
     RecrystalizeVolumeImpl(CellularAutomata::Lattice* cellLattice, int32_t* currentGrainIDs, int32_t* workingGrainIDs, uint32_t* updateTime, int neighborhoodType, tbb::atomic<size_t>* counter, uint32_t* time, tbb::atomic<int32_t>* grainCount, float nucleationRate) :
 #elif
     RecrystalizeVolumeImpl(CellularAutomata::Lattice cellLattice, int32_t* currentGrainIDs, int32_t* workingGrainIDs, uint32_t* updateTime, int neighborhoodType, size_t* counter, uint32_t* time, int32_t* grainCount, float nucleationRate) :
@@ -252,7 +252,7 @@ class RecrystalizeVolumeImpl
       }
     }
 
-#ifdef DREAM3D_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
     void operator()(const tbb::blocked_range<size_t>& r) const
     {
       compute(r.begin(), r.end());
@@ -265,7 +265,7 @@ class RecrystalizeVolumeImpl
     uint32_t* m_updateTime;
     int m_neighborhood;
 
-#ifdef DREAM3D_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
     tbb::atomic<size_t>* m_unrecrystalizedCount;
     tbb::atomic<int32_t>* m_grainCount;
 #elif
@@ -390,20 +390,20 @@ void RecrystalizeVolume::setupFilterParameters()
 int RecrystalizeVolume::writeFilterParameters(AbstractFilterParametersWriter* writer, int index)
 {
   writer->openFilterGroup(this, index);
-  DREAM3D_FILTER_WRITE_PARAMETER(NucleationRate)
-  DREAM3D_FILTER_WRITE_PARAMETER(Neighborhood)
-  DREAM3D_FILTER_WRITE_PARAMETER(DataContainerName)
-  DREAM3D_FILTER_WRITE_PARAMETER(CellAttributeMatrixName)
-  DREAM3D_FILTER_WRITE_PARAMETER(CellFeatureAttributeMatrixName)
-  DREAM3D_FILTER_WRITE_PARAMETER(CellEnsembleAttributeMatrixName)
-  DREAM3D_FILTER_WRITE_PARAMETER(FeatureIdsArrayName)
-  DREAM3D_FILTER_WRITE_PARAMETER(RecrystallizationTimeArrayName)
-  DREAM3D_FILTER_WRITE_PARAMETER(RecrystallizationHistoryArrayName)
-  DREAM3D_FILTER_WRITE_PARAMETER(ActiveArrayName)
-  DREAM3D_FILTER_WRITE_PARAMETER(AvramiArrayName)
-  DREAM3D_FILTER_WRITE_PARAMETER(Dimensions)
-  DREAM3D_FILTER_WRITE_PARAMETER(Resolution)
-  DREAM3D_FILTER_WRITE_PARAMETER(Origin)
+  SIMPL_FILTER_WRITE_PARAMETER(NucleationRate)
+  SIMPL_FILTER_WRITE_PARAMETER(Neighborhood)
+  SIMPL_FILTER_WRITE_PARAMETER(DataContainerName)
+  SIMPL_FILTER_WRITE_PARAMETER(CellAttributeMatrixName)
+  SIMPL_FILTER_WRITE_PARAMETER(CellFeatureAttributeMatrixName)
+  SIMPL_FILTER_WRITE_PARAMETER(CellEnsembleAttributeMatrixName)
+  SIMPL_FILTER_WRITE_PARAMETER(FeatureIdsArrayName)
+  SIMPL_FILTER_WRITE_PARAMETER(RecrystallizationTimeArrayName)
+  SIMPL_FILTER_WRITE_PARAMETER(RecrystallizationHistoryArrayName)
+  SIMPL_FILTER_WRITE_PARAMETER(ActiveArrayName)
+  SIMPL_FILTER_WRITE_PARAMETER(AvramiArrayName)
+  SIMPL_FILTER_WRITE_PARAMETER(Dimensions)
+  SIMPL_FILTER_WRITE_PARAMETER(Resolution)
+  SIMPL_FILTER_WRITE_PARAMETER(Origin)
   writer->closeFilterGroup();
   return ++index; // we want to return the next index that was just written to
 }
@@ -581,7 +581,7 @@ void RecrystalizeVolume::execute()
   workingIDs->initializeWithValue(0);
 
   //initialize variables to track recrystallizatino progress
-#ifdef DREAM3D_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
   tbb::atomic<size_t> unrecrstallizedCount;
   unrecrstallizedCount = 1;
   tbb::atomic<int32_t> grainCount;
@@ -602,7 +602,7 @@ void RecrystalizeVolume::execute()
     unrecrstallizedCount = 0;
 
     //perform time step
-#ifdef DREAM3D_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
     bool doParallel = true;
     if (doParallel == true)
     {
@@ -663,7 +663,7 @@ void RecrystalizeVolume::execute()
 
   //perform regression
   double slope, intercept;
-  if(DREAM3DMath::linearRegression<float>(slope, intercept, x, y))
+  if(SIMPLibMath::linearRegression<float>(slope, intercept, x, y))
   {
     m_Avrami[0] = exp(intercept);//k
     m_Avrami[1] = slope;//n
