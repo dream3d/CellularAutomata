@@ -12,9 +12,10 @@
 #include "SIMPLib/Common/IFilterFactory.hpp"
 #include "SIMPLib/Common/FilterFactory.hpp"
 
-
-#include "CellularAutomata/moc_CellularAutomataPlugin.cpp"
 #include "CellularAutomata/CellularAutomataConstants.h"
+
+// Include the MOC generated CPP file which has all the QMetaObject methods/data
+#include "moc_CellularAutomataPlugin.cpp"
 
 // -----------------------------------------------------------------------------
 //

@@ -96,7 +96,11 @@ get_filename_component(PLUGINS_BINARY_DIR  ${${PLUGIN_NAME}_BINARY_DIR} DIRECTOR
 include_directories( ${${PLUGIN_NAME}_BINARY_DIR} )
 include_directories( ${${PLUGIN_NAME}_SOURCE_DIR})
 include_directories( ${PLUGINS_SOURCE_DIR} )
-include_directories( ${PLUGINS_BINARY_DIR} )
+include_directories( ${PLUGINS_BINARY_DIR})
+include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME})
+include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME}/${PLUGIN_NAME}Filters)
+include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME}/FilterParameterWidgets)
+include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME}/Test)
 
 # ******************************************************************************
 # Create our custom executable that will generate most of our QFilterWidget
@@ -127,8 +131,11 @@ endif()
 # These headers will be MOC'ed by the build system. They should all inherit from QObject
 # --------------------------------------------------------------------
 set(${PLUGIN_NAME}_HDRS
-  ${PROJECT_SOURCE_DIR}/${PLUGIN_NAME}Plugin.h
   ${PROJECT_SOURCE_DIR}/${PLUGIN_NAME}Constants.h
+)
+
+set(${PLUGIN_NAME}_MOC_HDRS
+  ${PROJECT_SOURCE_DIR}/${PLUGIN_NAME}Plugin.h
 )
 
 set(${PLUGIN_NAME}_SRCS
@@ -138,7 +145,7 @@ set(${PLUGIN_NAME}_SRCS
 set(${PLUGIN_NAME}_MISC_HDRS
     ${PROJECT_SOURCE_DIR}/${PLUGIN_NAME}Constants.h
 )
-cmp_IDE_SOURCE_PROPERTIES( "${PLUGIN_NAME}/" "${${PLUGIN_NAME}_HDRS};${${PLUGIN_NAME}_MISC_HDRS}" "${${PLUGIN_NAME}_SRCS}" "0")
+cmp_IDE_SOURCE_PROPERTIES( "" "${${PLUGIN_NAME}_MOC_HDRS};${${PLUGIN_NAME}_HDRS};${${PLUGIN_NAME}_MISC_HDRS}" "${${PLUGIN_NAME}_SRCS}" "0")
 
 # -----------------------------------------------------------------------------
 # Collect all of our Generated header and source files so that they show up in the various projects
@@ -147,15 +154,22 @@ set(${PLUGIN_NAME}_GEN_HDRS
    ${RegisterKnownFiltersFile}
    ${AllFilterParameterWidgetsHeaderFile}
    ${RegisterKnownFilterParameterWidgetsFile}
-   ${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Config.h
   "${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Version.h"
   "${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Version.cpp"
 )
 
 # --------------------------------------------------------------------
+# and finally this will run moc:
+QT5_WRAP_CPP( ${PLUGIN_NAME}_Generated_MOC_SRCS ${${PLUGIN_NAME}_MOC_HDRS} )
+set_source_files_properties( ${${PLUGIN_NAME}_Generated_MOC_SRCS} PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties( ${${PLUGIN_NAME}_Generated_MOC_SRCS} PROPERTIES GENERATED TRUE)
+
+
+# --------------------------------------------------------------------
 #
 # --------------------------------------------------------------------
 set_source_files_properties( ${${PLUGIN_NAME}_MODULE_MOC_SRCS} PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties( ${${PLUGIN_NAME}_Generated_MOC_SRCS} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties( ${RegisterKnownFiltersFile} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties( ${RegisterKnownFilterParameterWidgetsFile} PROPERTIES HEADER_FILE_ONLY TRUE)
 
@@ -174,8 +188,9 @@ set(${PLUGIN_NAME}_MODULE_SRCS
   ${${PLUGIN_NAME}_Project_SRCS}  # These sources come from the SourceList.cmake file and include .h/.cpp/moc/uic files
   ${${PLUGIN_NAME}_HDRS}
   ${${PLUGIN_NAME}_SRCS}
-  ${${PLUGIN_NAME}_MODULE_MOC_SRCS}
+  ${${PLUGIN_NAME}_MOC_HDRS}
   ${${PLUGIN_NAME}_MISC_HDRS}
+  ${${PLUGIN_NAME}_Generated_MOC_SRCS}
   # -- Add in the Filter Parameter Widgets
   ${${PLUGIN_NAME}_ParameterWidgets_HDRS}
   ${${PLUGIN_NAME}_ParameterWidgets_SRCS}
@@ -190,7 +205,6 @@ set(${PLUGIN_NAME}_MODULE_SRCS
   ${${PLUGIN_NAME}_Widgets_Generated_UI_HDRS}
   ${${PLUGIN_NAME}_GEN_HDRS}
   # -- Add in the miscellaneous resources (license, plugin info, ...)
-  ${${PLUGIN_NAME}_Generated_RC_SRCS}
   # -- Add in our Generated Version Files
   ${${PLUGIN_NAME}_BINARY_DIR}/${VERSION_HEADER_FILE_NAME}
   ${${PLUGIN_NAME}_BINARY_DIR}/${VERSION_SOURCE_FILE_NAME}
@@ -214,7 +228,7 @@ target_link_libraries(${PLUGIN_NAME}
                     DREAM3DWidgetsLib
                     )
 SET_TARGET_PROPERTIES(${PLUGIN_NAME} PROPERTIES FOLDER ${PLUGIN_NAME}Plugin)
-qt5_use_modules(${PROJECT_NAME} Core Gui Widgets)
+qt5_use_modules(${PLUGIN_NAME} Core Gui Widgets)
 
 # --------------------------------------------------------------------
 # Set some additional properties of the plugin like its output name
@@ -228,8 +242,8 @@ if(NOT MSVC)
   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY  ${DREAM3DProj_BINARY_DIR}/Bin  )
 endif()
 
-if(${DREAM3D_BUILD_TESTING})
-  ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/Test ${PROJECT_BINARY_DIR}/Test)
+if(DREAM3D_BUILD_TESTING)
+  include(${PROJECT_SOURCE_DIR}/Test/CMakeLists.txt)
 endif()
 
 
