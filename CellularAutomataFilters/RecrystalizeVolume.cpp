@@ -16,6 +16,7 @@
 #include <QtCore/QString>
 
 #include "SIMPLib/Math/SIMPLibMath.h"
+#include "SIMPLib/Geometry/ImageGeom.h"
 
 #include <boost/random/mersenne_twister.hpp>
 #include <boost/random/uniform_int.hpp>

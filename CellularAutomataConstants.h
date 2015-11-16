@@ -13,7 +13,7 @@ namespace CellularAutomata
 {
   const QString CellularAutomataPluginFile("CellularAutomataPlugin");
   const QString CellularAutomataPluginDisplayName("CellularAutomata");
-  const QString CellularAutomataBaseName("CellularAutomataPlugin");
+  const QString CellularAutomataBaseName("CellularAutomata");
 }
 
 /**
