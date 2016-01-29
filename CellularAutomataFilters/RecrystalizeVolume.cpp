@@ -290,18 +290,18 @@ class RecrystalizeVolumeImpl
 // -----------------------------------------------------------------------------
 RecrystalizeVolume::RecrystalizeVolume() :
   AbstractFilter(),
-  m_DataContainerName(DREAM3D::Defaults::SyntheticVolumeDataContainerName),
-  m_CellAttributeMatrixName(DREAM3D::Defaults::CellAttributeMatrixName),
-  m_CellFeatureAttributeMatrixName(DREAM3D::Defaults::CellFeatureAttributeMatrixName),
-  m_CellEnsembleAttributeMatrixName(DREAM3D::Defaults::CellEnsembleAttributeMatrixName),
+  m_DataContainerName(SIMPL::Defaults::SyntheticVolumeDataContainerName),
+  m_CellAttributeMatrixName(SIMPL::Defaults::CellAttributeMatrixName),
+  m_CellFeatureAttributeMatrixName(SIMPL::Defaults::CellFeatureAttributeMatrixName),
+  m_CellEnsembleAttributeMatrixName(SIMPL::Defaults::CellEnsembleAttributeMatrixName),
   m_NucleationRate(0.0001f),
   m_Neighborhood(0),
   m_FeatureIds(NULL),
-  m_FeatureIdsArrayName(DREAM3D::CellData::FeatureIds),
+  m_FeatureIdsArrayName(SIMPL::CellData::FeatureIds),
   m_RecrystallizationTime(NULL),
   m_RecrystallizationTimeArrayName("RecrystallizationTime"),
   m_Active(NULL),
-  m_ActiveArrayName(DREAM3D::FeatureData::Active),
+  m_ActiveArrayName(SIMPL::FeatureData::Active),
   m_RecrystallizationHistory(NULL),
   m_RecrystallizationHistoryArrayName("RecrystallizationHistory"),
   m_Avrami(NULL),
@@ -440,14 +440,14 @@ void RecrystalizeVolume::dataCheck()
 
   // Create our output Attribute Matrix objects
   QVector<size_t> tDims(3, 0);
-  AttributeMatrix::Pointer cellAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellAttributeMatrixName(), tDims, DREAM3D::AttributeMatrixType::Cell);
+  AttributeMatrix::Pointer cellAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellAttributeMatrixName(), tDims, SIMPL::AttributeMatrixType::Cell);
   if(getErrorCondition() < 0) { return; }
 
   QVector<size_t> cDims(1, 1);
-  AttributeMatrix::Pointer cellFeatureAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellFeatureAttributeMatrixName(), cDims, DREAM3D::AttributeMatrixType::CellFeature);
+  AttributeMatrix::Pointer cellFeatureAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellFeatureAttributeMatrixName(), cDims, SIMPL::AttributeMatrixType::CellFeature);
   if(getErrorCondition() < 0) { return; }
 
-  AttributeMatrix::Pointer CellEnsembleAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellEnsembleAttributeMatrixName(), cDims, DREAM3D::AttributeMatrixType::CellEnsemble);
+  AttributeMatrix::Pointer CellEnsembleAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellEnsembleAttributeMatrixName(), cDims, SIMPL::AttributeMatrixType::CellEnsemble);
   if(getErrorCondition() < 0) { return; }
 
   //create arrays
