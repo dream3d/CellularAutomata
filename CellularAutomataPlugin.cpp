@@ -23,10 +23,10 @@
 CellularAutomataPlugin::CellularAutomataPlugin() :
   m_Version("0.1.1"),
   m_CompatibilityVersion("0.1.1"),
-  m_Vendor(DREAM3D::BlueQuartz::VendorName),
-  m_URL(DREAM3D::BlueQuartz::URL),
+  m_Vendor(BlueQuartz::VendorName),
+  m_URL(BlueQuartz::URL),
   m_Location(""),
-  m_Copyright(DREAM3D::BlueQuartz::Copyright),
+  m_Copyright(BlueQuartz::Copyright),
   m_Filters(QList<QString>()),
   m_DidLoad(false)
 {
