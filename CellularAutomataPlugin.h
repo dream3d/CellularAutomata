@@ -2,8 +2,8 @@
  * Your License or Copyright Information can go here
  */
 
-#ifndef _CellularAutomata_H_
-#define _CellularAutomata_H_
+#ifndef _cellularautomataplugin_h_
+#define _cellularautomataplugin_h_
 
 #include <QtCore/QObject>
 #include <QtCore/QSettings>

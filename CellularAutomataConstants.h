@@ -1,8 +1,8 @@
 /*
  * Your License should go here
  */
-#ifndef _CellularAutomataConstants_H_
-#define _CellularAutomataConstants_H_
+#ifndef _cellularautomataconstants_h_
+#define _cellularautomataconstants_h_
 
 #include <QtCore/QString>
 

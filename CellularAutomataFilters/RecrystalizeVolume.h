@@ -2,8 +2,8 @@
  * Your License or Copyright Information can go here
  */
 
-#ifndef _RecrystalizeVolume_H_
-#define _RecrystalizeVolume_H_
+#ifndef _recrystalizevolume_h_
+#define _recrystalizevolume_h_
 
 #include <QtCore/QDateTime>
 
