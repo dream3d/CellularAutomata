@@ -352,15 +352,15 @@ void RecrystalizeVolume::setupFilterParameters()
     parameter->setAdvanced(false);
     parameters.push_back(parameter);
   }
-  parameters.push_back(StringFilterParameter::New("New DataContainer Name", "DataContainerName", getDataContainerName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("New Cell Attribute Matrix Name", "CellAttributeMatrixName", getCellAttributeMatrixName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("New Cell Feature Attribute Matrix Name", "CellFeatureAttributeMatrixName", getCellFeatureAttributeMatrixName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("New Cell Ensemble Attribute Matrix Name", "CellEnsembleAttributeMatrixName", getCellEnsembleAttributeMatrixName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("Feature Ids Array Name", "FeatureIdsArrayName", getFeatureIdsArrayName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("Recrystallization Time Array Name", "RecrystallizationTimeArrayName", getRecrystallizationTimeArrayName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("Recrystallization History Array Name", "RecrystallizationHistoryArrayName", getRecrystallizationHistoryArrayName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("Active Array Name", "ActiveArrayName", getActiveArrayName(), FilterParameter::Uncategorized));
-  parameters.push_back(StringFilterParameter::New("Avrami Parameter Array Name", "AvramiArrayName", getAvramiArrayName(), FilterParameter::Uncategorized));
+  parameters.push_back(StringFilterParameter::New("New DataContainer Name", "DataContainerName", getDataContainerName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, DataContainerName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, DataContainerName)));
+  parameters.push_back(StringFilterParameter::New("New Cell Attribute Matrix Name", "CellAttributeMatrixName", getCellAttributeMatrixName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, CellAttributeMatrixName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, CellAttributeMatrixName)));
+  parameters.push_back(StringFilterParameter::New("New Cell Feature Attribute Matrix Name", "CellFeatureAttributeMatrixName", getCellFeatureAttributeMatrixName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, CellFeatureAttributeMatrixName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, CellFeatureAttributeMatrixName)));
+  parameters.push_back(StringFilterParameter::New("New Cell Ensemble Attribute Matrix Name", "CellEnsembleAttributeMatrixName", getCellEnsembleAttributeMatrixName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, CellEnsembleAttributeMatrixName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, CellEnsembleAttributeMatrixName)));
+  parameters.push_back(StringFilterParameter::New("Feature Ids Array Name", "FeatureIdsArrayName", getFeatureIdsArrayName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, FeatureIdsArrayName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, FeatureIdsArrayName)));
+  parameters.push_back(StringFilterParameter::New("Recrystallization Time Array Name", "RecrystallizationTimeArrayName", getRecrystallizationTimeArrayName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, RecrystallizationTimeArrayName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, RecrystallizationTimeArrayName)));
+  parameters.push_back(StringFilterParameter::New("Recrystallization History Array Name", "RecrystallizationHistoryArrayName", getRecrystallizationHistoryArrayName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, RecrystallizationHistoryArrayName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, RecrystallizationHistoryArrayName)));
+  parameters.push_back(StringFilterParameter::New("Active Array Name", "ActiveArrayName", getActiveArrayName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, ActiveArrayName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, ActiveArrayName)));
+  parameters.push_back(StringFilterParameter::New("Avrami Parameter Array Name", "AvramiArrayName", getAvramiArrayName(), FilterParameter::Uncategorized, SIMPL_BIND_SETTER(RecrystalizeVolume, this, AvramiArrayName), SIMPL_BIND_GETTER(RecrystalizeVolume, this, AvramiArrayName)));
   parameters.push_back(;
                        parameters.push_back(;
                                             parameters.push_back(;
