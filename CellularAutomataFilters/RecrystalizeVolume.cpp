@@ -404,6 +404,7 @@ void RecrystalizeVolume::initialize()
 void RecrystalizeVolume::dataCheck()
 {
   setErrorCondition(0);
+  setWarningCondition(0);
 
   // Create the output Data Container
   DataContainer::Pointer m = getDataContainerArray()->createNonPrereqDataContainer<AbstractFilter>(this, getDataContainerName());
@@ -528,6 +529,7 @@ void RecrystalizeVolume::execute()
   // happens to fail in the dataCheck() then we simply return
   if(getErrorCondition() < 0) { return; }
   setErrorCondition(0);
+  setWarningCondition(0);
 
   //get cretaed data container
   DataContainer::Pointer m = getDataContainerArray()->getDataContainer(m_DataContainerName);
