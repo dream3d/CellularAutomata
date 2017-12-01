@@ -189,8 +189,8 @@ class RecrystalizeVolume : public AbstractFilter
     DEFINE_CREATED_DATAARRAY_VARIABLE(float, RecrystallizationHistory)
     DEFINE_CREATED_DATAARRAY_VARIABLE(float, Avrami)
 
-    RecrystalizeVolume(const RecrystalizeVolume&); // Copy Constructor Not Implemented
-    void operator=(const RecrystalizeVolume&); // Operator '=' Not Implemented
+    RecrystalizeVolume(const RecrystalizeVolume&) = delete; // Copy Constructor Not Implemented
+    void operator=(const RecrystalizeVolume&) = delete;     // Operator '=' Not Implemented
 };
 
 #endif /* _RecrystalizeVolume_H_ */

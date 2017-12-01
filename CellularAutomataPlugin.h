@@ -135,8 +135,8 @@ class CellularAutomataPlugin : public QObject, public ISIMPLibPlugin
     QList<QString>      m_Filters;
     bool                m_DidLoad;
 
-    CellularAutomataPlugin(const CellularAutomataPlugin&); // Copy Constructor Not Implemented
-    void operator=(const CellularAutomataPlugin&); // Operator '=' Not Implemented
+    CellularAutomataPlugin(const CellularAutomataPlugin&) = delete; // Copy Constructor Not Implemented
+    void operator=(const CellularAutomataPlugin&) = delete;         // Operator '=' Not Implemented
 };
 
 #endif /* _CellularAutomata_H_ */

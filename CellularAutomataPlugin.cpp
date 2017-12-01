@@ -14,7 +14,6 @@
 #include "CellularAutomata/CellularAutomataConstants.h"
 
 // Include the MOC generated CPP file which has all the QMetaObject methods/data
-#include "moc_CellularAutomataPlugin.cpp"
 
 // -----------------------------------------------------------------------------
 //
@@ -35,9 +34,7 @@ CellularAutomataPlugin::CellularAutomataPlugin() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CellularAutomataPlugin::~CellularAutomataPlugin()
-{
-}
+CellularAutomataPlugin::~CellularAutomataPlugin() = default;
 
 // -----------------------------------------------------------------------------
 //
