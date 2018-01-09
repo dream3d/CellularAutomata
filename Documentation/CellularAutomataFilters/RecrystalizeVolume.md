@@ -2,10 +2,12 @@ RecrystalizeVolume {#recrystalizevolume}
 =====
 
 ## Group (Subgroup) ##
+
 CellularAutomata (CellularAutomata)
 
 
 ## Description ##
+
 This filter simulates recrystallization using cellular automata. Initially all voxels are unrecrystallized. Cells are evolved with the following rules until all cells are recrystallized:
 	
 1. If at least one neighbor is recrystallized, pick a random recrystallized neighbor to join
@@ -24,6 +26,7 @@ The fraction of volume recrytsallized at each time step is saved and fit to the 
 
 
 ## Parameters ##
+
 | Name             | Type |
 |------------------|------|
 | Nucleation Rate | Float |
@@ -33,6 +36,7 @@ The fraction of volume recrytsallized at each time step is saved and fit to the 
 | Origin | Float |
 
 ## Required Arrays ##
+
 None
 
 
