@@ -39,9 +39,25 @@ CellularAutomataPlugin::~CellularAutomataPlugin() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-QString CellularAutomataPlugin::getPluginName()
+QString CellularAutomataPlugin::getPluginFileName()
+{
+  return CellularAutomata::CellularAutomataPluginFile;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+QString CellularAutomataPlugin::getPluginDisplayName()
 {
   return CellularAutomata::CellularAutomataPluginDisplayName;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+QString CellularAutomataPlugin::getPluginBaseName()
+{
+  return CellularAutomata::CellularAutomataBaseName;
 }
 
 // -----------------------------------------------------------------------------
