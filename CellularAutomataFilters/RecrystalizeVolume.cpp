@@ -481,7 +481,7 @@ void RecrystalizeVolume::preflight()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString RecrystalizeVolume::getCompiledLibraryName()
+const QString RecrystalizeVolume::getCompiledLibraryName() const
 {
   return CellularAutomata::CellularAutomataBaseName;
 }
@@ -489,7 +489,7 @@ const QString RecrystalizeVolume::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString RecrystalizeVolume::getGroupName()
+const QString RecrystalizeVolume::getGroupName() const
 {
   return "CellularAutomata";
 }
@@ -497,7 +497,7 @@ const QString RecrystalizeVolume::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString RecrystalizeVolume::getHumanLabel()
+const QString RecrystalizeVolume::getHumanLabel() const
 {
   return "RecrystalizeVolume";
 }
@@ -513,7 +513,7 @@ const QUuid RecrystalizeVolume::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString RecrystalizeVolume::getSubGroupName()
+const QString RecrystalizeVolume::getSubGroupName() const
 {
   return "Misc";
 }
@@ -674,7 +674,7 @@ void RecrystalizeVolume::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer RecrystalizeVolume::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer RecrystalizeVolume::newFilterInstance(bool copyFilterParameters) const
 {
   RecrystalizeVolume::Pointer filter = RecrystalizeVolume::New();
   if(true == copyFilterParameters)
