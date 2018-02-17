@@ -5,7 +5,7 @@
 #include "RecrystalizeVolume.h"
 #include "CellularAutomataHelpers.hpp"
 
-#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
 #include <tbb/parallel_for.h>
 #include <tbb/blocked_range.h>
 #include <tbb/partitioner.h>
@@ -35,7 +35,7 @@ class RecrystalizeVolumeImpl
     static const int TWENTY_CELL = 4;
     static const int MOORE = 5;
 
-#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
     RecrystalizeVolumeImpl(CellularAutomata::Lattice* cellLattice, int32_t* currentGrainIDs, int32_t* workingGrainIDs, uint32_t* updateTime, int neighborhoodType, tbb::atomic<size_t>* counter, uint32_t* time, tbb::atomic<int32_t>* grainCount, float nucleationRate) :
 #elif
     RecrystalizeVolumeImpl(CellularAutomata::Lattice cellLattice, int32_t* currentGrainIDs, int32_t* workingGrainIDs, uint32_t* updateTime, int neighborhoodType, size_t* counter, uint32_t* time, int32_t* grainCount, float nucleationRate) :
@@ -253,7 +253,7 @@ class RecrystalizeVolumeImpl
       }
     }
 
-#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
     void operator()(const tbb::blocked_range<size_t>& r) const
     {
       compute(r.begin(), r.end());
@@ -266,7 +266,7 @@ class RecrystalizeVolumeImpl
     uint32_t* m_updateTime;
     int m_neighborhood;
 
-#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
     tbb::atomic<size_t>* m_unrecrystalizedCount;
     tbb::atomic<int32_t>* m_grainCount;
 #elif
@@ -574,7 +574,7 @@ void RecrystalizeVolume::execute()
   workingIDs->initializeWithValue(0);
 
   //initialize variables to track recrystallizatino progress
-#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
   tbb::atomic<size_t> unrecrstallizedCount;
   unrecrstallizedCount = 1;
   tbb::atomic<int32_t> grainCount;
@@ -595,7 +595,7 @@ void RecrystalizeVolume::execute()
     unrecrstallizedCount = 0;
 
     //perform time step
-#ifdef SIMPLib_USE_PARALLEL_ALGORITHMS
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
     bool doParallel = true;
     if (doParallel == true)
     {
