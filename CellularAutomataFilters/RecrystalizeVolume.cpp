@@ -418,14 +418,14 @@ void RecrystalizeVolume::dataCheck()
 
   // Create our output Attribute Matrix objects
   QVector<size_t> tDims(3, 0);
-  AttributeMatrix::Pointer cellAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellAttributeMatrixName(), tDims, SIMPL::AttributeMatrixType::Cell);
+  AttributeMatrix::Pointer cellAttrMat = m->createNonPrereqAttributeMatrix(this, getCellAttributeMatrixName(), tDims, SIMPL::AttributeMatrixType::Cell);
   if(getErrorCondition() < 0) { return; }
 
   QVector<size_t> cDims(1, 1);
-  AttributeMatrix::Pointer cellFeatureAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellFeatureAttributeMatrixName(), cDims, SIMPL::AttributeMatrixType::CellFeature);
+  AttributeMatrix::Pointer cellFeatureAttrMat = m->createNonPrereqAttributeMatrix(this, getCellFeatureAttributeMatrixName(), cDims, SIMPL::AttributeMatrixType::CellFeature);
   if(getErrorCondition() < 0) { return; }
 
-  AttributeMatrix::Pointer CellEnsembleAttrMat = m->createNonPrereqAttributeMatrix<AbstractFilter>(this, getCellEnsembleAttributeMatrixName(), cDims, SIMPL::AttributeMatrixType::CellEnsemble);
+  AttributeMatrix::Pointer CellEnsembleAttrMat = m->createNonPrereqAttributeMatrix(this, getCellEnsembleAttributeMatrixName(), cDims, SIMPL::AttributeMatrixType::CellEnsemble);
   if(getErrorCondition() < 0) { return; }
 
   //create arrays
