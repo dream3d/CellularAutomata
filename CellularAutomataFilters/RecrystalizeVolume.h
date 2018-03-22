@@ -25,7 +25,7 @@ class RecrystalizeVolume : public AbstractFilter
   public:
     SIMPL_SHARED_POINTERS(RecrystalizeVolume)
     SIMPL_STATIC_NEW_MACRO(RecrystalizeVolume)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(RecrystalizeVolume, AbstractFilter)
+    SIMPL_TYPE_MACRO_SUPER_OVERRIDE(RecrystalizeVolume, AbstractFilter)
 
     virtual ~RecrystalizeVolume();
 
