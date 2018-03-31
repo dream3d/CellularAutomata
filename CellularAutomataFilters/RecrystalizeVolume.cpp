@@ -283,24 +283,23 @@ class RecrystalizeVolumeImpl
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-RecrystalizeVolume::RecrystalizeVolume() :
-  AbstractFilter(),
-  m_DataContainerName(SIMPL::Defaults::SyntheticVolumeDataContainerName),
-  m_CellAttributeMatrixName(SIMPL::Defaults::CellAttributeMatrixName),
-  m_CellFeatureAttributeMatrixName(SIMPL::Defaults::CellFeatureAttributeMatrixName),
-  m_CellEnsembleAttributeMatrixName(SIMPL::Defaults::CellEnsembleAttributeMatrixName),
-  m_NucleationRate(0.0001f),
-  m_Neighborhood(0),
-  m_FeatureIds(nullptr),
-  m_FeatureIdsArrayName(SIMPL::CellData::FeatureIds),
-  m_RecrystallizationTime(nullptr),
-  m_RecrystallizationTimeArrayName("RecrystallizationTime"),
-  m_Active(nullptr),
-  m_ActiveArrayName(SIMPL::FeatureData::Active),
-  m_RecrystallizationHistory(nullptr),
-  m_RecrystallizationHistoryArrayName("RecrystallizationHistory"),
-  m_Avrami(nullptr),
-  m_AvramiArrayName("AvaramiParameters")
+RecrystalizeVolume::RecrystalizeVolume()
+: m_DataContainerName(SIMPL::Defaults::SyntheticVolumeDataContainerName)
+, m_CellAttributeMatrixName(SIMPL::Defaults::CellAttributeMatrixName)
+, m_CellFeatureAttributeMatrixName(SIMPL::Defaults::CellFeatureAttributeMatrixName)
+, m_CellEnsembleAttributeMatrixName(SIMPL::Defaults::CellEnsembleAttributeMatrixName)
+, m_NucleationRate(0.0001f)
+, m_Neighborhood(0)
+, m_FeatureIds(nullptr)
+, m_FeatureIdsArrayName(SIMPL::CellData::FeatureIds)
+, m_RecrystallizationTime(nullptr)
+, m_RecrystallizationTimeArrayName("RecrystallizationTime")
+, m_Active(nullptr)
+, m_ActiveArrayName(SIMPL::FeatureData::Active)
+, m_RecrystallizationHistory(nullptr)
+, m_RecrystallizationHistoryArrayName("RecrystallizationHistory")
+, m_Avrami(nullptr)
+, m_AvramiArrayName("AvaramiParameters")
 {
   m_Dimensions.x = 128;
   m_Dimensions.y = 128;
@@ -313,7 +312,6 @@ RecrystalizeVolume::RecrystalizeVolume() :
   m_Origin.x = 0.0f;
   m_Origin.y = 0.0f;
   m_Origin.z = 0.0f;
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------
