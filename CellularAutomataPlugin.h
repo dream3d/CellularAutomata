@@ -154,7 +154,7 @@ class CellularAutomataPlugin : public QObject, public ISIMPLibPlugin
     bool                m_DidLoad;
 
     CellularAutomataPlugin(const CellularAutomataPlugin&) = delete; // Copy Constructor Not Implemented
-    void operator=(const CellularAutomataPlugin&) = delete;         // Operator '=' Not Implemented
+    void operator=(const CellularAutomataPlugin&) = delete;         // Move assignment Not Implemented
 };
 
 #endif /* _CellularAutomata_H_ */
