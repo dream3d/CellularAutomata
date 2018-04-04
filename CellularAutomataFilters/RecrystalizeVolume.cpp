@@ -283,24 +283,23 @@ class RecrystalizeVolumeImpl
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-RecrystalizeVolume::RecrystalizeVolume() :
-  AbstractFilter(),
-  m_DataContainerName(SIMPL::Defaults::SyntheticVolumeDataContainerName),
-  m_CellAttributeMatrixName(SIMPL::Defaults::CellAttributeMatrixName),
-  m_CellFeatureAttributeMatrixName(SIMPL::Defaults::CellFeatureAttributeMatrixName),
-  m_CellEnsembleAttributeMatrixName(SIMPL::Defaults::CellEnsembleAttributeMatrixName),
-  m_NucleationRate(0.0001f),
-  m_Neighborhood(0),
-  m_FeatureIds(nullptr),
-  m_FeatureIdsArrayName(SIMPL::CellData::FeatureIds),
-  m_RecrystallizationTime(nullptr),
-  m_RecrystallizationTimeArrayName("RecrystallizationTime"),
-  m_Active(nullptr),
-  m_ActiveArrayName(SIMPL::FeatureData::Active),
-  m_RecrystallizationHistory(nullptr),
-  m_RecrystallizationHistoryArrayName("RecrystallizationHistory"),
-  m_Avrami(nullptr),
-  m_AvramiArrayName("AvaramiParameters")
+RecrystalizeVolume::RecrystalizeVolume()
+: m_DataContainerName(SIMPL::Defaults::SyntheticVolumeDataContainerName)
+, m_CellAttributeMatrixName(SIMPL::Defaults::CellAttributeMatrixName)
+, m_CellFeatureAttributeMatrixName(SIMPL::Defaults::CellFeatureAttributeMatrixName)
+, m_CellEnsembleAttributeMatrixName(SIMPL::Defaults::CellEnsembleAttributeMatrixName)
+, m_NucleationRate(0.0001f)
+, m_Neighborhood(0)
+, m_FeatureIds(nullptr)
+, m_FeatureIdsArrayName(SIMPL::CellData::FeatureIds)
+, m_RecrystallizationTime(nullptr)
+, m_RecrystallizationTimeArrayName("RecrystallizationTime")
+, m_Active(nullptr)
+, m_ActiveArrayName(SIMPL::FeatureData::Active)
+, m_RecrystallizationHistory(nullptr)
+, m_RecrystallizationHistoryArrayName("RecrystallizationHistory")
+, m_Avrami(nullptr)
+, m_AvramiArrayName("AvaramiParameters")
 {
   m_Dimensions.x = 128;
   m_Dimensions.y = 128;
@@ -313,7 +312,6 @@ RecrystalizeVolume::RecrystalizeVolume() :
   m_Origin.x = 0.0f;
   m_Origin.y = 0.0f;
   m_Origin.z = 0.0f;
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------
@@ -433,28 +431,28 @@ void RecrystalizeVolume::dataCheck()
   DataArrayPath tempPath;
   tempPath.update(getDataContainerName(), getCellAttributeMatrixName(), getFeatureIdsArrayName() );
   m_FeatureIdsPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<int32_t>, AbstractFilter, int32_t>(this, tempPath, 0, dims);
-  if( nullptr != m_FeatureIdsPtr.lock().get() )
+  if(nullptr != m_FeatureIdsPtr.lock())
   { m_FeatureIds = m_FeatureIdsPtr.lock()->getPointer(0); }
 
   tempPath.update(getDataContainerName(), getCellAttributeMatrixName(), getRecrystallizationTimeArrayName() );
   m_RecrystallizationTimePtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<uint32_t>, AbstractFilter, uint32_t>(this, tempPath, 0, dims);
-  if( nullptr != m_RecrystallizationTimePtr.lock().get() )
+  if(nullptr != m_RecrystallizationTimePtr.lock())
   { m_RecrystallizationTime = m_RecrystallizationTimePtr.lock()->getPointer(0); }
 
   tempPath.update(getDataContainerName(), getCellFeatureAttributeMatrixName(), getActiveArrayName() );
   m_ActivePtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<bool>, AbstractFilter, bool>(this, tempPath, 0, dims);
-  if( nullptr != m_ActivePtr.lock().get() )
+  if(nullptr != m_ActivePtr.lock())
   { m_Active = m_ActivePtr.lock()->getPointer(0); }
 
   tempPath.update(getDataContainerName(), getCellEnsembleAttributeMatrixName(), getRecrystallizationHistoryArrayName() );
   m_RecrystallizationHistoryPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims);
-  if( nullptr != m_RecrystallizationHistoryPtr.lock().get() )
+  if(nullptr != m_RecrystallizationHistoryPtr.lock())
   { m_RecrystallizationHistory = m_RecrystallizationHistoryPtr.lock()->getPointer(0); }
 
   dims[0] = 2;
   tempPath.update(getDataContainerName(), getCellEnsembleAttributeMatrixName(), getAvramiArrayName() );
   m_AvramiPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims);
-  if( nullptr != m_AvramiPtr.lock().get() )
+  if(nullptr != m_AvramiPtr.lock())
   { m_Avrami = m_AvramiPtr.lock()->getPointer(0); }
 }
 
