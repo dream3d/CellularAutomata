@@ -218,7 +218,11 @@ void CellularAutomataPlugin::readSettings(QSettings& prefs)
 
 }
 
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void CellularAutomataPlugin::registerFilterWidgets(FilterWidgetManager* fwm)
+{
+}
+
 #include "CellularAutomataFilters/RegisterKnownFilters.cpp"
-
-#include "FilterParameterWidgets/RegisterKnownFilterParameterWidgets.cpp"
-
