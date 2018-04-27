@@ -10,7 +10,13 @@ class CellularAutomataGuiPlugin : public CellularAutomataPlugin
 
 public:
   CellularAutomataGuiPlugin();
-  ~CellularAutomataGuiPlugin() override;
+   ~CellularAutomataGuiPlugin() override;
+  
+  /**
+   * @brief Register all the filters with the FilterWidgetFactory
+   */
+  void registerFilterWidgets(FilterWidgetManager* fwm) override;
+  
 
 public:
   CellularAutomataGuiPlugin(const CellularAutomataGuiPlugin&) = delete;            // Copy Constructor Not Implemented

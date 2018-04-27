@@ -11,14 +11,17 @@
 #include "SIMPLib/Plugin/ISIMPLibPlugin.h"
 
 
+#include "CellularAutomata/CellularAutomataDLLExport.h"
+
 /**
- * @class CellularAutomataPlugin CellularAutomataPlugin.h SurfaceMeshing/CellularAutomataPlugin.h
+ * @class CellularAutomataPlugin CellularAutomataPlugin.hSurfaceMeshing/CellularAutomataPlugin.h
  * @brief
  * @author
  * @date
  * @version 1.0
  */
-class CellularAutomataPlugin : public QObject, public ISIMPLibPlugin
+class CellularAutomata_EXPORT CellularAutomataPlugin : public QObject, public ISIMPLibPlugin
+
 {
     Q_OBJECT
     Q_INTERFACES(ISIMPLibPlugin)
