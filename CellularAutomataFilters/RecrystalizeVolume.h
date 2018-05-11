@@ -11,6 +11,8 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
+#include "CellularAutomata/CellularAutomataDLLExport.h"
+
 /**
  * @class RecrystalizeVolume RecrystalizeVolume.h CellularAutomata/CellularAutomataFilters/RecrystalizeVolume.h
  * @brief
@@ -18,7 +20,7 @@
  * @date
  * @version 1.0
  */
-class RecrystalizeVolume : public AbstractFilter
+class CellularAutomata_EXPORT RecrystalizeVolume : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(RecrystalizeVolume SUPERCLASS AbstractFilter)
