@@ -2,8 +2,7 @@
  * Your License or Copyright Information can go here
  */
 
-#ifndef _recrystalizevolume_h_
-#define _recrystalizevolume_h_
+#pragma once
 
 #include <QtCore/QDateTime>
 
@@ -221,4 +220,3 @@ class CellularAutomata_EXPORT RecrystalizeVolume : public AbstractFilter
     RecrystalizeVolume& operator=(RecrystalizeVolume&&) = delete;      // Move Assignment
 };
 
-#endif /* _RecrystalizeVolume_H_ */

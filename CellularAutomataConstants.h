@@ -1,8 +1,7 @@
 /*
  * Your License should go here
  */
-#ifndef _cellularautomataconstants_h_
-#define _cellularautomataconstants_h_
+#pragma once
 
 #include <QtCore/QString>
 
@@ -36,4 +35,3 @@ namespace BlueQuartz
 }
 
 
-#endif

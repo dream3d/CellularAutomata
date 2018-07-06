@@ -2,8 +2,7 @@
  * Your License or Copyright Information can go here
  */
 
-#ifndef _cellularautomataplugin_h_
-#define _cellularautomataplugin_h_
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QSettings>
@@ -160,4 +159,3 @@ class CellularAutomata_EXPORT CellularAutomataPlugin : public QObject, public IS
     void operator=(const CellularAutomataPlugin&) = delete;         // Move assignment Not Implemented
 };
 
-#endif /* _CellularAutomata_H_ */

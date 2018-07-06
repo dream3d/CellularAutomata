@@ -1,5 +1,4 @@
-#ifndef _CellularAutomataHelpers_H_
-#define _CellularAutomataHelpers_H_
+#pragma once
 
 namespace CellularAutomata
 {
@@ -504,4 +503,3 @@ namespace CellularAutomata
 	};
 }
 
-#endif
