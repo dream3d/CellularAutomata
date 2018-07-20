@@ -11,6 +11,7 @@
 #include "SIMPLib/Filtering/FilterManager.h"
 
 #include "CellularAutomata/CellularAutomataConstants.h"
+#include "CellularAutomata/CellularAutomataVersion.h"
 
 // Include the MOC generated CPP file which has all the QMetaObject methods/data
 
