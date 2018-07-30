@@ -20,7 +20,7 @@ public:
 
 public:
   CellularAutomataGuiPlugin(const CellularAutomataGuiPlugin&) = delete;            // Copy Constructor Not Implemented
-  CellularAutomataGuiPlugin(CellularAutomataGuiPlugin&&) = delete;                 // Move Constructor
+  CellularAutomataGuiPlugin(CellularAutomataGuiPlugin&&) = delete;                 // Move Constructor Not Implemented
   CellularAutomataGuiPlugin& operator=(const CellularAutomataGuiPlugin&) = delete; // Copy Assignment Not Implemented
   CellularAutomataGuiPlugin& operator=(CellularAutomataGuiPlugin&&) = delete;      // Move Assignment Not Implemented
 };
