@@ -217,6 +217,6 @@ class CellularAutomata_EXPORT RecrystalizeVolume : public AbstractFilter
     RecrystalizeVolume(const RecrystalizeVolume&) = delete; // Copy Constructor Not Implemented
     RecrystalizeVolume(RecrystalizeVolume&&) = delete;      // Move Constructor Not Implemented
     RecrystalizeVolume& operator=(const RecrystalizeVolume&) = delete; // Copy Assignment Not Implemented
-    RecrystalizeVolume& operator=(RecrystalizeVolume&&) = delete;      // Move Assignment
+    RecrystalizeVolume& operator=(RecrystalizeVolume&&) = delete;      // Move Assignment Not Implemented
 };
 
