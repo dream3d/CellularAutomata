@@ -663,9 +663,6 @@ void RecrystalizeVolume::execute()
     QString ss = QObject::tr("Unable to fit Avrami Parameters");
     notifyWarningMessage(getHumanLabel(), ss, 1);
   }
-
-  /* Let the GUI know we are done with this filter */
-  notifyStatusMessage(getHumanLabel(), "Complete");
 }
 
 // -----------------------------------------------------------------------------
