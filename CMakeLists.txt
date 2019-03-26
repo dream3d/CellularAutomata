@@ -3,6 +3,7 @@
 #--////////////////////////////////////////////////////////////////////////////
 
 set(PLUGIN_NAME CellularAutomata)
+message(FATAL_ERROR "${PLUGIN_NAME} is NOT supported any more. Please do not include it in your compiles")
 set(${PLUGIN_NAME}_VERSION "1.0")
 set(${PLUGIN_NAME}_VERSION_MAJOR "1")
 set(${PLUGIN_NAME}_VERSION_MINOR "0")
